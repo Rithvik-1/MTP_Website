@@ -46,4 +46,4 @@ if st.button('Predict'):
     prediction = predict_reduction(diameter, flow_rate, absorption_coefficient)
     st.success(f'Predicted E. coli reduction: {prediction:.3f} log')
     uv_dose_value = prediction * 2.5
-    st.success(f'Predicted UV dose value : {uv_dose_value:.3f} J/cm^2')
+    st.success(f'Predicted UV dose value : {uv_dose_value:.3f} J/cm²')
