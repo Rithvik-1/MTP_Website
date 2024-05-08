@@ -46,17 +46,18 @@ if st.button('Predict'):
     prediction = predict_reduction(diameter, flow_rate, absorption_coefficient)
     if prediction < 5:
         color = "red"
-        alert_msg = " - Alert: Critical low level!"
+        alert_msg = "<span style='color: red;'>Alert: Critical low level!</span>"
     else:
         color = "green"
-        alert_msg = " - Alert: Satisfactory level!"
+        alert_msg = "<span style='color: green;'>Alert: Satisfactory level!</span>"
         
-    prediction_text = f'Predicted E. coli reduction: <span style="color: {color};">{prediction:.3f}</span> log {alert_msg}'
+    prediction_text = f'Predicted E. coli reduction: <span style="color: {color};">{prediction:.3f} log</span> {alert_msg}'
     st.markdown(prediction_text, unsafe_allow_html=True)
 
     uv_dose_value = prediction * 2.5
     uv_dose_text = f'Predicted UV dose value: {uv_dose_value:.3f} J/cm²'
     st.success(uv_dose_text)
+
 
 # import streamlit as st
 # import pandas as pd
