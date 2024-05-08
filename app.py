@@ -46,10 +46,10 @@ if st.button('Predict'):
     prediction = predict_reduction(diameter, flow_rate, absorption_coefficient)
     if prediction < 5:
         color = "red"
-        alert_msg = "<span style='color: red;'>Alert: Critical low level!</span>"
+        alert_msg = "<span style='color: red;'> - Alert: Critical low level!</span>"
     else:
         color = "green"
-        alert_msg = "<span style='color: green;'>Alert: Satisfactory level!</span>"
+        alert_msg = "<span style='color: green;'> - Alert: Satisfactory level!</span>"
         
     prediction_text = f'Predicted E. coli reduction: <span style="color: {color};">{prediction:.3f} log</span> {alert_msg}'
     st.markdown(prediction_text, unsafe_allow_html=True)
