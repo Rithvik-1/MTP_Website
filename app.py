@@ -44,7 +44,7 @@ absorption_coefficient = st.number_input('Absorption Coefficient', min_value=0.0
 
 if st.button('Predict'):
     prediction = predict_reduction(diameter, flow_rate, absorption_coefficient)
-    prediction_text = f'Predicted E. coli reduction: <span style="color: {"red" if prediction < 5 else "black"};">{prediction:.3f}</span> log'
+    prediction_text = f'Predicted E. coli reduction: <span style="color: {"red" if prediction < 5 else "black"};">{prediction:.3f} log'
     st.markdown(prediction_text, unsafe_allow_html=True)
 
     uv_dose_value = prediction * 2.5
