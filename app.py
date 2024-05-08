@@ -45,18 +45,21 @@ absorption_coefficient = st.number_input('Absorption Coefficient', min_value=0.0
 if st.button('Predict'):
     prediction = predict_reduction(diameter, flow_rate, absorption_coefficient)
     if prediction < 5:
-        color = "red"
-        alert_msg = "<span style='color: red;'> - Alert: Critical low level!</span>"
+        number_color = "darkred"
+        alert_color = "red"
+        alert_msg = "<span style='color: " + alert_color + ";'> - Alert: Critical low level!</span>"
     else:
-        color = "green"
-        alert_msg = "<span style='color: green;'> - Alert: Satisfactory level!</span>"
+        number_color = "darkgreen"
+        alert_color = "green"
+        alert_msg = "<span style='color: " + alert_color + ";'> - Alert: Satisfactory level!</span>"
         
-    prediction_text = f'Predicted E. coli reduction: <span style="color: {color};">{prediction:.3f} log</span> {alert_msg}'
+    prediction_text = f'Predicted E. coli reduction: <span style="color: {number_color};">{prediction:.3f} log</span>{alert_msg}'
     st.markdown(prediction_text, unsafe_allow_html=True)
 
     uv_dose_value = prediction * 2.5
     uv_dose_text = f'Predicted UV dose value: {uv_dose_value:.3f} J/cm²'
     st.success(uv_dose_text)
+
 
 
 # import streamlit as st
