@@ -21,7 +21,7 @@ st.set_page_config(
     initial_sidebar_state='auto'
 )
 
-# Add a background image
+# Add a background image and style for UV dose
 st.markdown(
     """
     <style>
@@ -29,12 +29,18 @@ st.markdown(
             background-image: url('https://images.unsplash.com/photo-1594784022066-e3b5ce6ca015');
             background-size: cover;
         }
-        /* Additional styles */
         .alert-box {
             padding: 10px;
             border-radius: 5px;
             margin: 10px 0px;
             font-size: 18px; /* Larger font size for better readability */
+        }
+        .uv-dose-box {
+            background-color: #e6ffe6; /* Light green background for UV dose */
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 18px; /* Consistent font size with the alert box */
+            color: #2c662d; /* Dark green text color */
         }
     </style>
     """,
@@ -64,8 +70,9 @@ if st.button('Predict'):
     st.markdown(prediction_text, unsafe_allow_html=True)
 
     uv_dose_value = prediction * 2.5
-    uv_dose_text = f'Predicted UV dose value: {uv_dose_value:.3f} J/cm²'
-    st.success(uv_dose_text)
+    uv_dose_text = f'<div class="uv-dose-box"><strong>Predicted UV dose value:</strong> {uv_dose_value:.3f} J/cm²</div>'
+    st.markdown(uv_dose_text, unsafe_allow_html=True)
+
 
 
 
