@@ -44,15 +44,14 @@ absorption_coefficient = st.number_input('Absorption Coefficient', min_value=0.0
 
 if st.button('Predict'):
     prediction = predict_reduction(diameter, flow_rate, absorption_coefficient)
-    if prediction < 5:
-        st.success(f'Predicted E. coli reduction: <span style="color: red;">{prediction:.3f}</span> log', unsafe_allow_html=True)
-    else:
-        st.success(f'Predicted E. coli reduction: {prediction:.3f} log')
+    # Using HTML and inline CSS to mimic the success style while applying conditional coloring
+    message_style = f"background-color:#AAF0D1; padding: 10px; border-radius: 5px;"
+    prediction_text = f'<div style="{message_style}">Predicted E. coli reduction: {"<span style=\'color: red;\'>" + str(prediction) + " log</span>" if prediction < 5 else str(prediction) + " log"}</div>'
+    st.markdown(prediction_text, unsafe_allow_html=True)
 
     uv_dose_value = prediction * 2.5
-    st.success(f'Predicted UV dose value: {uv_dose_value:.3f} J/cm²')
-
-
+    uv_dose_text = f'<div style="{message_style}">Predicted UV dose value: {uv_dose_value:.3f} J/cm²</div>'
+    st.markdown(uv_dose_text, unsafe_allow_html=True)
 
 
 
