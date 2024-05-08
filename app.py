@@ -45,7 +45,7 @@ absorption_coefficient = st.number_input('Absorption Coefficient', min_value=0.0
 if st.button('Predict'):
     prediction = predict_reduction(diameter, flow_rate, absorption_coefficient)
     if prediction < 5:
-        st.markdown(f'<div style="background-color:#00CC96; padding: 8px; border-radius: 5px;"><b>Predicted E. coli reduction:</b> <span style="color: red;">{prediction:.3f}</span> log</div>', unsafe_allow_html=True)
+        st.markdown(f'<div style="padding: 8px; border-radius: 5px;"><b>Predicted E. coli reduction:</b> <span style="color: red;">{prediction:.3f}</span> log</div>', unsafe_allow_html=True)
     else:
         st.success(f'Predicted E. coli reduction: {prediction:.3f} log')
 
