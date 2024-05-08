@@ -47,7 +47,6 @@ if st.button('Predict'):
     prediction_message = f'Predicted E. coli reduction: {prediction:.3f} log'
     if prediction < 5:
         prediction_message = f'Predicted E. coli reduction: <span style="color: red;">{prediction:.3f} log'
-    st.markdown(f'<div style="background-color:#AAF0D1; padding: 10px; border-radius: 5px;">{prediction_message}</div>', unsafe_allow_html=True)
 
     uv_dose_value = prediction * 2.5
     uv_dose_message = f'Predicted UV dose value: {uv_dose_value:.3f} J/cm²'
