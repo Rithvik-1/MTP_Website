@@ -46,4 +46,7 @@ if st.button('Predict'):
     prediction = predict_reduction(diameter, flow_rate, absorption_coefficient)
     prediction_text = f'Predicted E. coli reduction: {"<span style=\'color: red;\'>" + str(prediction) + " log</span>" if prediction < 5 else str(prediction) + " log"}'
     uv_dose_value = prediction * 2.5
-    uv_dose_text = f'Predicted UV dose value
+    uv_dose_text = f'Predicted UV dose value: {"<span style=\'color: red;\'>" + str(uv_dose_value) + " J/cm²</span>" if uv_dose_value < 5 else str(uv_dose_value) + " J/cm²"}'
+    
+    st.success(f"""{prediction_text}""")
+    st.success(f"""{uv_dose_text}""")
