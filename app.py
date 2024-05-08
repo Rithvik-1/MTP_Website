@@ -29,6 +29,13 @@ st.markdown(
             background-image: url('https://images.unsplash.com/photo-1594784022066-e3b5ce6ca015');
             background-size: cover;
         }
+        /* Additional styles */
+        .alert-box {
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0px;
+            font-size: 18px; /* Larger font size for better readability */
+        }
     </style>
     """,
     unsafe_allow_html=True
@@ -45,15 +52,15 @@ absorption_coefficient = st.number_input('Absorption Coefficient', min_value=0.0
 if st.button('Predict'):
     prediction = predict_reduction(diameter, flow_rate, absorption_coefficient)
     if prediction < 5:
-        number_color = "darkred"
-        alert_color = "red"
-        alert_msg = "<span style='color: " + alert_color + ";'> - Alert: Critical low level!</span>"
+        color = "#ffcccc"  # Light red
+        text_color = "darkred"
+        alert_msg = "<span style='color: darkred;'> - Alert: Critical low level!</span>"
     else:
-        number_color = "darkgreen"
-        alert_color = "green"
-        alert_msg = "<span style='color: " + alert_color + ";'> - Alert: Satisfactory level!</span>"
+        color = "#ccffcc"  # Light green
+        text_color = "darkgreen"
+        alert_msg = "<span style='color: darkgreen;'> - Alert: Satisfactory level!</span>"
         
-    prediction_text = f'Predicted E. coli reduction: <span style="color: {number_color};">{prediction:.3f} log</span>{alert_msg}'
+    prediction_text = f'<div class="alert-box" style="background-color: {color};"><strong>Predicted E. coli reduction:</strong> <span style="color: {text_color};">{prediction:.3f} log</span>{alert_msg}</div>'
     st.markdown(prediction_text, unsafe_allow_html=True)
 
     uv_dose_value = prediction * 2.5
